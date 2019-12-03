@@ -8,10 +8,10 @@
       <!-- 登录表单 -->
       <el-form class="login_form" :model="loginForm" :rules="loginFormRules" ref="loginFormRef">
         <el-form-item prop="username">
-          <el-input v-model="loginForm.username" prefix-icon="iconfont icon-bussiness-man"></el-input>
+          <el-input v-model="loginForm.username" prefix-icon="iconfont icon-users"></el-input>
         </el-form-item>
         <el-form-item prop="password">
-          <el-input v-model="loginForm.password" prefix-icon="iconfont icon-tool" type="password"></el-input>
+          <el-input v-model="loginForm.password" prefix-icon="iconfont icon-3702mima" type="password"></el-input>
         </el-form-item>
         <el-form-item class="btns">
           <el-button type="primary" @click="login">登录</el-button>
@@ -55,8 +55,8 @@ export default {
       this.$refs.loginFormRef.validate(async valid => {
         if (!valid) return;
         //解构，并且把data的数据赋值给res
-        const { data: res} = await this.$http.post("login", this.loginForm);
-        if( res.meta.status !== 200) return this.$message.error("登录失败");
+        const { data: res } = await this.$http.post("login", this.loginForm);
+        if (res.meta.status !== 200) return this.$message.error("登录失败");
         this.$message.success("登录成功");
         //将token保存到sessionStorage中
         window.sessionStorage.setItem("token", res.data.token);
